@@ -1,0 +1,13 @@
+@page
+@model ProyectoCiclo3.App.Frontend.Pages.DetailsEncomiendaModel
+@{
+    var encomienda = Model.Encomienda;
+}
+ 
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"> <b>id: </b> @encomienda.id</li>
+  <li class="list-group-item"> <b>Descripción: </b> @encomienda.descripcion</li>
+  <li class="list-group-item"> <b>Peso: </b> @encomienda.peso</li>
+  <li class="list-group-item"><b>Tipo: </b> @encomienda.tipo</li>
+  <li class="list-group-item"><b>Presentación: </b> @encomienda.presentacion</li>
+</ul>  
