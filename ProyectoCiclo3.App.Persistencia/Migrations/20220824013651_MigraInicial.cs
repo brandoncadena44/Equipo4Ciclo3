@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoCiclo3.App.Persistencia.Migrations
 {
@@ -31,7 +32,7 @@ namespace ProyectoCiclo3.App.Persistencia.Migrations
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     apellidos = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    telefonos = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ciudad = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -47,7 +48,7 @@ namespace ProyectoCiclo3.App.Persistencia.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     origenid = table.Column<int>(type: "int", nullable: true),
                     destinoid = table.Column<int>(type: "int", nullable: true),
-                    fecha = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     hora = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     encomiendaid = table.Column<int>(type: "int", nullable: true)
                 },
