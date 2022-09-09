@@ -1,0 +1,31 @@
+@page
+@model ProyectoCiclo3.App.Frontend.Pages.EditEncomiendaModel
+@{
+    var encomienda = Model.Encomienda;
+}
+ 
+<div class = "text-center">
+<form method = "POST">
+  <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@encomienda.id" readonly>
+  <label for="descripcion" class="form-label">descripcion:</label>
+  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" required minlength="8" asp-for="@encomienda.descripcion">
+  <label for="peso" class="form-label">peso:</label>
+  <input type="number" class="form-control" id="peso" name="peso" placeholder="peso" asp-for="@encomienda.peso" required>
+  <label for="tipo" class="form-label">tipo:</label>
+  <select name="tipo" id="tipo" class="form-control" asp-for="@encomienda.tipo" required>
+    <option value="">-</option>
+    <option value="Ropa">Ropa</option>
+    <option value="Alimentos">Alimentos</option>
+    <option value="Electronicos">Electronicos</option>
+  </select>
+  <label for="presentacion" class="form-label">presentacion:</label>
+  <select name="presentacion" id="presentacion" class="form-control" asp-for="@encomienda.presentacion" required>
+    <option value="">-</option>
+    <option value="Sobre">Sobre</option>
+    <option value="Caja">Caja</option>
+    <option value="Guacal">Guacal</option>
+  </select>
+  <hr>
+  <button type="submit" class="btn btn-success">Actualizar</button>
+</form>
+</div>
