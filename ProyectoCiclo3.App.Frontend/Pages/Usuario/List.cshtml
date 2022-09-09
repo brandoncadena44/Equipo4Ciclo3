@@ -1,49 +1,35 @@
 @page
+@model ProyectoCiclo3.App.Frontend.Pages.ListUsuarioModel
 @{
 }
  
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope = "col">Itm</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Hora</th>
-      <th scope="col">Origen</th>
-      <th scope="col">Destino</th>
-      <th scope="col">Encomienda</th>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Direccion</th>
+      <th>Telefono</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>10/10/2021</td>
-      <td>07:00</td>
-      <td>bogota</td>
-      <td>cali</td>
-      <td>caja</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>10/10/2021</td>
-      <td>07:00</td>
-      <td>bogota</td>
-      <td>cartagena</td>
-      <td>sobre</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>11/10/2021</td>
-      <td>07:00</td>
-      <td>bogota</td>
-      <td>santa martha</td>
-      <td>guacal</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>11/10/2021</td>
-      <td>08:00</td>
-      <td>bogota</td>
-      <td>medellin</td>
-      <td>sobre</td>
+     @foreach (var usuario in Model.Usuarios)
+    {
+        <tr>
+            <td>@usuario.id</td>
+            <td>@usuario.nombre</td>
+            <td>@usuario.apellidos</td>
+            <td>@usuario.direccion</td>
+            <td>@usuario.telefono</td>
+            <td>
+              <a class="btn btn-info" asp-page="./Details" asp-route-usuarioId="@usuario.id"><i class="fas fa-adjust"></i>Ver</a>
+              <a class="btn btn-info" asp-page="./Edit" asp-route-usuarioId="@usuario.id">Editar</a>
+              <a class="btn btn-danger" href="">Eliminar</a>
+            </td>
+        </tr>
+    }
+
   </tbody>
 </table>
