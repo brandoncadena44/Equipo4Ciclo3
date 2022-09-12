@@ -38,6 +38,22 @@ namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
             
         return usuario;
         }
+        public Usuario Create(Usuario newUsuario)
+        {
+           if(usuarios.Count > 0){
+             newUsuario.id=usuarios.Max(r => r.id) +1; 
+            }else{
+               newUsuario.id = 1; 
+            }
+           usuarios.Add(newUsuario);
+           return newUsuario;
+        }
+        public Usuario Delete(int id)
+        {
+            var usuario = usuarios.SingleOrDefault(e => e.id == id);
+            usuarios.Remove(usuario);
+            return usuario;
+        }
     
     }
 }

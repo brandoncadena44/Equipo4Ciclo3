@@ -26,9 +26,14 @@
             <td>@servicio.hora</td>
             <td>@servicio.encomienda</td>
             <td>
-              <a class="btn btn-info" asp-page="./Details" asp-route-servicioId="@servicio.id"><i class="fas fa-adjust"></i>Ver</a>
-              <a class="btn btn-info" asp-page="./Edit" asp-route-servicioId="@servicio.id">Editar</a>
-              <a class="btn btn-danger" href="">Eliminar</a>
+              <div class="btn-group" role="group" aria-label="Basic example">
+               <a class="btn btn-info" asp-page="./Details" asp-route-servicioId="@servicio.id"><i class="fas fa-adjust"></i>Ver</a>
+               <a class="btn btn-info" asp-page="./Edit" asp-route-servicioId="@servicio.id">Editar</a>
+                <form method="POST">
+                 <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@servicio.id">
+                 <button type="submit"class="btn btn-danger" href="">Eliminar</button>
+                </form>
+              </div>
             </td>
         </tr>
     }

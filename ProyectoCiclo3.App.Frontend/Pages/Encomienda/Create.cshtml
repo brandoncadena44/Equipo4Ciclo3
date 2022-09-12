@@ -3,28 +3,30 @@
 @{
 }
  
-<div class="text-center">
-<form method="POST">
+<div class = "text-center">
+<form method = "POST">
   <label for="descripcion" class="form-label">descripcion:</label>
-  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion">
+  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" required minlength="3"  asp-for="Encomienda.descripcion">
+  <span class="text-danger" asp-validation-for="Encomienda.descripcion"></span> <br>
   <label for="peso" class="form-label">peso:</label>
-  <input type="number" class="form-control" id="peso" name="peso" placeholder="peso">
+  <input type="number" class="form-control" id="peso" name="peso" placeholder="peso" asp-for="Encomienda.peso">
+  <span class="text-danger" asp-validation-for="Encomienda.descripcion"></span> <br>
   <label for="tipo" class="form-label">tipo:</label>
-  <select name="tipo" id="tipo" class="form-control">
+  <select name="tipo" id="tipo" class="form-control" asp-for="Encomienda.tipo">
     <option value="">-</option>
     <option value="Ropa">Ropa</option>
     <option value="Alimentos">Alimentos</option>
     <option value="Electronicos">Electronicos</option>
   </select>
+  <span class="text-danger" asp-validation-for="Encomienda.descripcion"></span> <br>
   <label for="presentacion" class="form-label">presentacion:</label>
-  <select name="presentacion" id="presentacion" class="form-control">
+  <select name="presentacion" id="presentacion" class="form-control" asp-for="Encomienda.presentacion">
     <option value="">-</option>
     <option value="Sobre">Sobre</option>
-     <option value="Caja">Paquete</option>
     <option value="Caja">Caja</option>
     <option value="Guacal">Guacal</option>
-    <option value="Guacal">Container</option>
   </select>
+  <span class="text-danger" asp-validation-for="Encomienda.descripcion"></span> <br>
   <hr>
   <button type="submit" class="btn btn-success">Enviar</button>
 </form>

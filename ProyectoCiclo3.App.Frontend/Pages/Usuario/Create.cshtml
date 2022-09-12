@@ -3,16 +3,20 @@
 @{
 }
  
-<div class="text-center">
-<form method="POST">
+<div class = "text-center">
+<form method = "POST">
   <label for="nombre" class="form-label">nombre:</label>
-  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" required minlength="3"  asp-for="Usuario.nombre">
+  <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
   <label for="apellidos" class="form-label">apellidos:</label>
-  <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos">
+  <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="apellidos" asp-for="Usuario.apellidos">
+  <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
   <label for="direccion" class="form-label">direccion:</label>
-  <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion">
-  <label for="telefono" class="form-label">telefono:</label>
-  <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
+  <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direccion" asp-for="Usuario.direccion">
+  <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
+ <label for="telefono" class="form-label">telefono:</label>
+  <input type="number" class="form-control" id="telefono" name="telefono" placeholder="telefono" asp-for="Usuario.telefono">
+  <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
   <hr>
   <button type="submit" class="btn btn-success">Enviar</button>
 </form>

@@ -24,9 +24,14 @@
             <td>@usuario.direccion</td>
             <td>@usuario.telefono</td>
             <td>
-              <a class="btn btn-info" asp-page="./Details" asp-route-usuarioId="@usuario.id"><i class="fas fa-adjust"></i>Ver</a>
-              <a class="btn btn-info" asp-page="./Edit" asp-route-usuarioId="@usuario.id">Editar</a>
-              <a class="btn btn-danger" href="">Eliminar</a>
+              <div class="btn-group" role="group" aria-label="Basic example">
+               <a class="btn btn-info" asp-page="./Details" asp-route-usuarioId="@usuario.id"><i class="fas fa-adjust"></i>Ver</a>
+               <a class="btn btn-info" asp-page="./Edit" asp-route-usuarioId="@usuario.id">Editar</a>
+                <form method="POST">
+                 <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@usuario.id">
+                 <button type="submit"class="btn btn-danger" href="">Eliminar</button>
+                </form>
+              </div>
             </td>
         </tr>
     }
