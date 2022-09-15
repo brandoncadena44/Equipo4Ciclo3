@@ -29,10 +29,33 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                <a class="btn btn-info" asp-page="./Details" asp-route-servicioId="@servicio.id"><i class="fas fa-adjust"></i>Ver</a>
                <a class="btn btn-info" asp-page="./Edit" asp-route-servicioId="@servicio.id">Editar</a>
-                <form method="POST">
-                 <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@servicio.id">
-                 <button type="submit"class="btn btn-danger" href="">Eliminar</button>
-                </form>
+                
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_@servicio.id">
+                    Eliminar
+                  </button>
+
+                  <div class="modal fade" id="exampleModal_@servicio.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Eliminar Registro</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          ¿Esta seguro que desea eliminar el servicio: @servicio.origen ?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <form method="POST">
+                            <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@servicio.id">
+                            <button type="submit"class="btn btn-danger" href="">Eliminar</button>
+                        </form>                         
+                       </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </td>
         </tr>

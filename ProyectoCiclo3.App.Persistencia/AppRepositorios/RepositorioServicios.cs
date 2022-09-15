@@ -6,55 +6,51 @@ using System;
 namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
 {
     public class RepositorioServicios
-    {
-        List<Servicio> servicios;
- 
-    public RepositorioServicios()
-        {
-            servicios= new List<Servicio>()
-            {
-                new Servicio{id=1,origen="Tunja",destino= "Bogota",fecha= "02/10/2022",hora= "11:00",encomienda= "Caja"},
-                new Servicio{id=2,origen="Raquira",destino= "Bogota",fecha= "03/10/2022",hora= "12:00",encomienda= "Caja"},
-                new Servicio{id=3,origen="Villa de Leiva",destino= "Bogota",fecha= "11/10/2022",hora= "12:10",encomienda= "Caja"}
-                
-            };
-        }
- 
+    { 
+        
+        private readonly AppContext _appContext = new AppContext();   
+
         public IEnumerable<Servicio> GetAll()
         {
-            return servicios;
+           return _appContext.Servicios;
         }
  
         public Servicio GetWithId(int id){
-            return servicios.SingleOrDefault(e => e.id == id);
+            return _appContext.Servicios.Find(id);
         }
+
         public Servicio Update(Servicio newServicio){
-            var servicio= servicios.SingleOrDefault(e => e.id == newServicio.id);
-            if(servicio!= null){
+            var servicio = _appContext.Servicios.Find(newServicio.id);
+            if(servicio != null){
                 servicio.origen = newServicio.origen;
                 servicio.destino = newServicio.destino;
                 servicio.fecha = newServicio.fecha;
                 servicio.hora = newServicio.hora;
                 servicio.encomienda = newServicio.encomienda;
+                //Guardar en base de datos
+                 _appContext.SaveChanges();
             }
-            
         return servicio;
         }
+
         public Servicio Create(Servicio newServicio)
         {
-           if(servicios.Count > 0){
-             newServicio.id=servicios.Max(r => r.id) +1; 
-            }else{
-               newServicio.id = 1; 
-            }
-           servicios.Add(newServicio);
-           return newServicio;
+           var addServicio = _appContext.Servicios.Add(newServicio);
+            //Guardar en base de datos
+            _appContext.SaveChanges();
+            return addServicio.Entity;
         }
+
         public Servicio Delete(int id)
         {
-            var servicio = servicios.SingleOrDefault(e => e.id == id);
-            servicios.Remove(servicio);
-            return servicio;
+            var servicio = _appContext.Servicios.Find(id);
+        if (servicio != null){
+            _appContext.Servicios.Remove(servicio);
+            //Guardar en base de datos
+            _appContext.SaveChanges();
         }
+         return null;  
+        }
+
     }
 }

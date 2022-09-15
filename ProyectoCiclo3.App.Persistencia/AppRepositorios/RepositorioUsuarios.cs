@@ -6,54 +6,50 @@ using System;
 namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
 {
     public class RepositorioUsuarios
-    {
-        List<Usuario> usuarios;
- 
-    public RepositorioUsuarios()
-        {
-            usuarios= new List<Usuario>()
-            {
-                new Usuario{id=1,nombre ="Armando",apellidos= "Salinas",direccion= "calle 200",telefono= "7113703"},
-                new Usuario{id=2,nombre ="Clemencia",apellidos= "Rodriguez",direccion= "calle 63 sur",telefono= "32145654"},
-                new Usuario{id=3,nombre ="Dionicio",apellidos= "Rangel",direccion= "cra 36 norte",telefono= "23456897"}
-            };
-        }
- 
+    { 
+        
+        private readonly AppContext _appContext = new AppContext();   
+
         public IEnumerable<Usuario> GetAll()
         {
-            return usuarios;
+           return _appContext.Usuarios;
         }
  
         public Usuario GetWithId(int id){
-            return usuarios.SingleOrDefault(e => e.id == id);
+            return _appContext.Usuarios.Find(id);
         }
+
         public Usuario Update(Usuario newUsuario){
-            var usuario= usuarios.SingleOrDefault(e => e.id == newUsuario.id);
-            if(usuario!= null){
+            var usuario = _appContext.Usuarios.Find(newUsuario.id);
+            if(usuario != null){
                 usuario.nombre = newUsuario.nombre;
                 usuario.apellidos = newUsuario.apellidos;
                 usuario.direccion = newUsuario.direccion;
                 usuario.telefono = newUsuario.telefono;
+                //Guardar en base de datos
+                 _appContext.SaveChanges();
             }
-            
         return usuario;
         }
+
         public Usuario Create(Usuario newUsuario)
         {
-           if(usuarios.Count > 0){
-             newUsuario.id=usuarios.Max(r => r.id) +1; 
-            }else{
-               newUsuario.id = 1; 
-            }
-           usuarios.Add(newUsuario);
-           return newUsuario;
+           var addUsuario = _appContext.Usuarios.Add(newUsuario);
+            //Guardar en base de datos
+            _appContext.SaveChanges();
+            return addUsuario.Entity;
         }
+
         public Usuario Delete(int id)
         {
-            var usuario = usuarios.SingleOrDefault(e => e.id == id);
-            usuarios.Remove(usuario);
-            return usuario;
+            var usuario = _appContext.Usuarios.Find(id);
+        if (usuario != null){
+            _appContext.Usuarios.Remove(usuario);
+            //Guardar en base de datos
+            _appContext.SaveChanges();
         }
-    
+         return null;  
+        }
+
     }
 }
