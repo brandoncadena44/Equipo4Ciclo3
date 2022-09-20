@@ -11,27 +11,29 @@ namespace ProyectoCiclo3.App.Frontend.Pages
 {
     public class ListServicioModel : PageModel
     {
-        
-        private readonly RepositorioServicios repositorioServicios;
-        public IEnumerable<Servicio> Servicios {get;set;}
+       
+        private readonly RepositorioServicios repositorioServicio;
         [BindProperty]
         public Servicio Servicio {get;set;}
-        public ListServicioModel(RepositorioServicios repositorioServicios)
-        {
-            this.repositorioServicios=repositorioServicios;
-        }
+        public IEnumerable<Servicio> Servicios {get;set;}
  
-        public void OnGet()
+    public ListServicioModel(RepositorioServicios repositorioServicio)
+    {
+        this.repositorioServicio=repositorioServicio;
+     }
+ 
+    public void OnGet()
+    {
+        Servicios=repositorioServicio.GetAll();
+    }
+    public IActionResult OnPost()
+    {
+        if(Servicio.id>0)
         {
-            Servicios=repositorioServicios.GetAll();
+        repositorioServicio.Delete(Servicio.id);
         }
-        public IActionResult OnPost()
-        {
-            if(Servicio.id>0)
-            {
-                repositorioServicios.Delete(Servicio.id);
-            }
-            return RedirectToPage("./List");
-        }
+        return RedirectToPage("./List");
+    }
+
     }
 }

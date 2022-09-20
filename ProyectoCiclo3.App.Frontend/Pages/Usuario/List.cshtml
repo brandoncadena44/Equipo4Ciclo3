@@ -11,6 +11,7 @@
       <th>Apellidos</th>
       <th>Direccion</th>
       <th>Telefono</th>
+      <th>Ciudad</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -23,6 +24,7 @@
             <td>@usuario.apellidos</td>
             <td>@usuario.direccion</td>
             <td>@usuario.telefono</td>
+            <td>@usuario.ciudad</td>
             <td>
               <div class="btn-group" role="group" aria-label="Basic example">
                <a class="btn btn-info" asp-page="./Details" asp-route-usuarioId="@usuario.id"><i class="fas fa-adjust"></i>Ver</a>

@@ -31,7 +31,6 @@ namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
             }
         return encomienda;
         }
-<<<<<<< HEAD
  
         public Encomienda Create(Encomienda newEncomienda)
         {
@@ -52,13 +51,5 @@ namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
          return null;  
         }
  
-=======
-        public Encomienda Delete(int id)
-        {
-            var encomienda = encomiendas.SingleOrDefault(e => e.id == id);
-            encomiendas.Remove(encomienda);
-            return encomienda;
-        }
->>>>>>> 8af84f49efcb847559b595e063b7763ed3141392
     }
 }

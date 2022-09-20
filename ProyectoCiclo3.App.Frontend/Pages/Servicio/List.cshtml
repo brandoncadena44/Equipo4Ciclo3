@@ -3,34 +3,32 @@
 @{
 }
  
-<table class="table table-hover">
+<h1>Listado de Servicio</h1>
+<table class="table">
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Origen</th>
-      <th>Destino</th>
-      <th>Fecha</th>
-      <th>Hora</th>
-      <th>Encomienda</th>
+      <th scope="col">#</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Hora</th>
+      <th scope="col">Encomienda</th>
       <th>Acciones</th>
     </tr>
   </thead>
-  <tbody>
-     @foreach (var servicio in Model.Servicios)
+    @foreach (var servicio in Model.Servicios)
     {
         <tr>
             <td>@servicio.id</td>
-            <td>@servicio.origen</td>
-            <td>@servicio.destino</td>
+            <td>@servicio.origen.nombre @servicio.origen.apellidos</td>
+            <td>@servicio.destino.nombre @servicio.destino.apellidos</td>
             <td>@servicio.fecha</td>
             <td>@servicio.hora</td>
-            <td>@servicio.encomienda</td>
+            <td>@servicio.encomienda.descripcion</td>
             <td>
-              <div class="btn-group" role="group" aria-label="Basic example">
-               <a class="btn btn-info" asp-page="./Details" asp-route-servicioId="@servicio.id"><i class="fas fa-adjust"></i>Ver</a>
-               <a class="btn btn-info" asp-page="./Edit" asp-route-servicioId="@servicio.id">Editar</a>
-                
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_@servicio.id">
+              <a class="btn btn-info" asp-page="./Details" asp-route-servicioId="@servicio.id">Ver</a>
+              <a class="btn btn-info" asp-page="./Edit" asp-route-servicioId="@servicio.id">Editar</a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_@servicio.id">
                     Eliminar
                   </button>
 
@@ -44,7 +42,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          ¿Esta seguro que desea eliminar el servicio: @servicio.origen ?
+                          ¿Esta seguro que desea eliminar el Servicio: @servicio.origen.nombre @servicio.origen.apellidos - @servicio.destino.nombre @servicio.destino.apellidos?
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -56,10 +54,7 @@
                       </div>
                     </div>
                   </div>
-              </div>
-            </td>
+              </td>
         </tr>
     }
-
-  </tbody>
 </table>

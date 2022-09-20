@@ -26,6 +26,7 @@ namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
                 usuario.apellidos = newUsuario.apellidos;
                 usuario.direccion = newUsuario.direccion;
                 usuario.telefono = newUsuario.telefono;
+                usuario. ciudad = newUsuario.ciudad;
                 //Guardar en base de datos
                  _appContext.SaveChanges();
             }

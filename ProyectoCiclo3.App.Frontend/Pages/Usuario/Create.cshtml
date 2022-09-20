@@ -17,6 +17,18 @@
  <label for="telefono" class="form-label">telefono:</label>
   <input type="number" class="form-control" id="telefono" name="telefono" placeholder="telefono" asp-for="Usuario.telefono">
   <span class="text-danger" asp-validation-for="Usuario.nombre"></span> <br>
+  <label for="ciudad" class="form-label">ciudad:</label>
+  <select name="ciudad" id="ciudad" class="form-control" asp-for="Usuario.ciudad">
+    <option value="">-</option>
+    <option value="Bogota">Bogota</option>
+    <option value="Cali">Cali</option>
+    <option value="Barranquilla">Barranquilla</option>
+    <option value="Cartagena">Cartagena</option>
+    <option value="Bucaramanga">Bucaramanga</option>
+    <option value="Pasto">Pasto</option>
+    <option value="Buenaventura">Buenaventura</option>
+    <option value="Medellin">Medellin</option>
+  </select>
   <hr>
   <button type="submit" class="btn btn-success">Enviar</button>
 </form>

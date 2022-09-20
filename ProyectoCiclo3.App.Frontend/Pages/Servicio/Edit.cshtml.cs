@@ -11,33 +11,39 @@ namespace ProyectoCiclo3.App.Frontend.Pages
 {
     public class EditServicioModel : PageModel
     {
-       private readonly RepositorioServicios repositorioServicios;
-       [BindProperty]
+        
+        private readonly RepositorioServicios repositorioServicio;
+        private readonly RepositorioUsuarios repositorioUsuario;
+        private readonly RepositorioEncomiendas repositorioEncomienda;
+        public IEnumerable<Usuario> Usuarios {get;set;}
+        public IEnumerable<Encomienda> Encomiendas {get;set;}       
+        [BindProperty]
         public Servicio Servicio {get;set;}
  
-        public EditServicioModel(RepositorioServicios repositorioServicios)
+        public EditServicioModel(RepositorioServicios repositorioServicio, RepositorioUsuarios repositorioUsuario, RepositorioEncomiendas repositorioEncomienda)
        {
-            this.repositorioServicios=repositorioServicios;
+            this.repositorioServicio=repositorioServicio;
+            this.repositorioUsuario=repositorioUsuario;
+            this.repositorioEncomienda=repositorioEncomienda;
        }
  
         public IActionResult OnGet(int servicioId)
         {
-            Servicio=repositorioServicios.GetWithId(servicioId);
+            Servicio=repositorioServicio.GetWithId(servicioId);
+            Usuarios=repositorioUsuario.GetAll();
+            Encomiendas=repositorioEncomienda.GetAll();
             return Page(); 
         }
- 
-        public IActionResult OnPost()
+
+        public IActionResult OnPost(int id, int origen, int destino, string fecha, string hora, int encomienda)
         {
             if(!ModelState.IsValid)
             {
                 return Page();
             }
-            if(Servicio.id>0)
-            {
-             Servicio = repositorioServicios.Update(Servicio);
-            }
+            Servicio = repositorioServicio.Update(id, origen, destino, fecha, hora, encomienda);            
             return RedirectToPage("./List");
         }
- 
+
     }
 }

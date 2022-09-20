@@ -2,22 +2,46 @@
 @model ProyectoCiclo3.App.Frontend.Pages.EditServicioModel
 @{
     var servicio = Model.Servicio;
+    
 }
- 
-<div class = "text-center">
-<form method = "POST">
-  <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@servicio.id" readonly>
-  <label for="origen" class="form-label">origen:</label>
-  <input type="text" class="form-control" id="origen" name="origen" placeholder="origen" required minlength="4" asp-for="@servicio.origen">
-  <label for="destino" class="form-label">destino:</label>
-  <input type="text" class="form-control" id="destino" name="destino" placeholder="destino" asp-for="@servicio.destino" required>
-  <label for="fecha" class="form-label">fecha:</label>
-  <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha" asp-for="@servicio.fecha" required>
-  <label for="hora" class="form-label"> hora:</label>
-  <input type="time" class="form-control" id="hora" name="hora" placeholder="Hora" asp-for="@servicio.hora" required>
-  <label for="encomienda" class="form-label">encomienda,:</label>
-  <input type="text" class="form-control" id="encomienda" name="encomienda" placeholder="encomienda" asp-for="@servicio.encomienda" required>
-  <hr>
-  <button type="submit" class="btn btn-success">Actualizar</button>
-</form>
+
+<div class="text-center">
+  <form method="post">
+    <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" value="@servicio.id" readonly>
+
+    <label for="origen" class="form-label">Origen:</label>
+    <select name="origen" class="form-control">
+      <option value="">-</option>
+      @foreach (var usuario in Model.Usuarios)
+      {
+        <option value="@usuario.id" >@usuario.nombre @usuario.apellidos - @usuario.ciudad</option>
+      }
+    </select>
+    <label for="destino" class="form-label">Destino:</label>
+    <select name="destino" class="form-control">
+      <option value="">-</option>
+      @foreach (var usuario in Model.Usuarios)
+      {
+        <option value="@usuario.id" >@usuario.nombre @usuario.apellidos - @usuario.ciudad</option>
+      }
+    </select>
+
+    <label for="fecha" class="form-label">Fecha:</label>
+    <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" required value="@servicio.fecha">
+
+    <label for="hora" class="form-label">Hora:</label>
+    <input type="time" class="form-control" id="hora" placeholder="Hora" name="hora" required value="@servicio.hora">
+
+    <label for="encomienda" class="form-label">Encomienda:</label>
+    <select name="encomienda" class="form-control" required>
+      <option value="">-</option>
+      @foreach (var encomienda in Model.Encomiendas)
+      {
+        <option value="@encomienda.id">@encomienda.descripcion</option>
+      }
+    </select>
+
+    <hr>
+    <button type="submit" class="btn btn-success">Enviar</button>
+  </form>
 </div>

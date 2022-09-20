@@ -19,10 +19,10 @@ namespace ProyectoCiclo3.App.Frontend.Pages
             this.repositorioServicios=repositorioServicios;
        }
  
-        public IActionResult OnGet(int ServicioId)
+        public IActionResult OnGet(int servicioId)
         {
-                Servicio=repositorioServicios.GetWithId(ServicioId);
-                return Page(); 
+            Servicio=repositorioServicios.GetWithId(servicioId);
+            return Page(); 
         }
     }
 }
