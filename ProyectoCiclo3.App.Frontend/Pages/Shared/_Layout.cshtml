@@ -17,6 +17,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                  @Html.Partial("_LoginPartial")
+ 
+                    @using Microsoft.AspNetCore.Identity
+                    @inject SignInManager<IdentityUser> SignInManager
+                    @if (SignInManager.IsSignedIn(User))
+                    {
                     <ul class="navbar-nav flex-grow-1">
                        <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-page="/Encomienda/Create">Crear Encomienda</a>
@@ -36,6 +42,7 @@
                         </li>
                         </li>
                     </ul>
+                    }
                 </div>
             </div>
         </nav>
