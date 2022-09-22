@@ -1,30 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] -Amazon</title>
-    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-
 <body>
-    <div class="offcanvas offcanvas-start bg-dark text-light" tabindex="-1" id="offcanvasExample"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <img src="https://www.pngplay.com/wp-content/uploads/3/White-Amazon-Logo-PNG-HD-Quality.png" class="logo"
-                alt="">
-
-        </div>
-        <div class="offcanvas-body">
-
-            <div class="dropdown mt-3">
-                <button class="btn btn-secondary paginas dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-bs-toggle="dropdown">
-                    Usuarios
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Amazon</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-<<<<<<< HEAD
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                   @Html.Partial("_LoginPartial")
  
@@ -53,82 +44,9 @@
                     </ul>
                     }
                 </div>
-=======
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" asp-page="/Usuario/Create">Crear</a></li>
-                    <li><a class="dropdown-item" asp-page="/Usuario/List">Listado</a></li>
-                </ul>
->>>>>>> 7dc20d8ff0b2117e59611d33e0cf86618747c7bf
             </div>
-
-            <div class="dropdown mt-3">
-                <button class="btn btn-secondary paginas dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-bs-toggle="dropdown">
-                    Encomiendas
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" asp-page="/Encomienda/Create">Crear</a></li>
-                    <li><a class="dropdown-item" asp-page="Encomienda/List">Listado</a></li>
-                </ul>
-            </div>
-
-            <div class="dropdown mt-3">
-                <button class="btn btn-secondary paginas dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-bs-toggle="dropdown">
-                    Servicios
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" asp-page="/Servicio/Create">Crear</a></li>
-                    <li><a class="dropdown-item" asp-page="/Servicio/List">Listado</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="paginas navbar-brand btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-                aria-controls="offcanvasExample">
-                <svg xmlns="http://www.w3.org/2000/svg" style="color:#ffffff;" width="16" height="16"
-                    fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
-            </a>
-
-        </div>
-    </nav>
-    @* <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-        <a class="navbar-brand" asp-area="" asp-page="/Index">Amazon</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Encomienda/Create">Crear Encomienda</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Encomienda/List">Listar Encomiendas</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Servicio/Create">Crear Servicio</a>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Servicio/List">Listar Servicio</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Usuario/Create">Crear Usuario</a>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Usuario/List">Listar Usuario</a>
-        </li>
-        </li>
-        </ul>
-        </div>
-        </div>
         </nav>
-        </header> *@
+    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -142,10 +60,9 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
-
 </html>

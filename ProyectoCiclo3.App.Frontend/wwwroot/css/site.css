@@ -69,17 +69,3 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
-
-
-.paginas{
-  background-color: #FBC01A;
-  width: 100%;
-}
-
-.paginas:hover{
-  background-color: #F28E13 !important;
-}
-
-.logo{
-  width:80%; 
-}
